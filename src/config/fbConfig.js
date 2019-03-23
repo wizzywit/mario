@@ -10,7 +10,8 @@ var config = {
     storageBucket: "wizzywit-mario-plan.appspot.com",
     messagingSenderId: "6781282277"
   };
-  firebase.initializeApp(config);
   
+  firebase.initializeApp(config);
 
-  export default firebase
+
+  export default config

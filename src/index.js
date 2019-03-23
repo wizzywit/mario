@@ -9,14 +9,20 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
-import fbConfig from './config/fbConfig'
-//compose cobim=nes multiple store enhancers like Middleware together to enhance futher
+import config from './config/fbConfig'
+//compose combines multiple store enhancers like Middleware together to enhance futher
+
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+
+const firebaseApp = firebase.initializeApp(config)
 
 
 const store = createStore(rootReducer, compose( 
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-    reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig)
+    reduxFirestore(firebaseApp),
+    reactReduxFirebase(firebaseApp)
     )
     );
 

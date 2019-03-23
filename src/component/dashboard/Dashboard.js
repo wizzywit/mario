@@ -9,13 +9,28 @@ class Dashboard extends Component {
     
     
     render () {
-        // console.log(this.props);
+        console.log(this.props);
         const { projects } = this.props //destructuring 
+        if (projects) {
+            return (
+                <div className="dashbord container">
+                    <div className="row">
+                        <div className="col s12 m6">
+                        <ProjectList projects={projects}/>
+                        </div>
+                        <div className="col s12 m5 offset-m1">
+                        <Notifications />
+                        </div>
+                    </div>
+    
+                </div>
+            )
+        } else {
         return (
             <div className="dashbord container">
                 <div className="row">
                     <div className="col s12 m6">
-                    <ProjectList projects={projects}/>
+                    <p className="white-text">Loading Projects...</p>
                     </div>
                     <div className="col s12 m5 offset-m1">
                     <Notifications />
@@ -24,6 +39,7 @@ class Dashboard extends Component {
 
             </div>
         )
+        }
     }
 
 }
@@ -31,7 +47,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     
     return {
-        projects: state.project.projects
+        projects: state.firestore.ordered.projects
     }
 }
 
@@ -42,6 +58,9 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'projects' }
+        { collection: 'projects' }
     ])
 )(Dashboard)
+
+// export default connect(mapStateToProps)(Dashboard)
+
