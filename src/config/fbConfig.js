@@ -1,6 +1,6 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
+// import 'firebase/auth'
 
 var config = {
     apiKey: "AIzaSyANmhzyXmACTkTT6fODw0abp2vg463QdNM",
@@ -11,7 +11,7 @@ var config = {
     messagingSenderId: "6781282277"
   };
   
-  firebase.initializeApp(config);
+  // firebase.initializeApp(config);
 
 
   export default config
